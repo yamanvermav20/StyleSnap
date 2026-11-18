@@ -1,0 +1,6 @@
+{
+  "$family": "lucide",
+  "back": { "icon": "arrow-left", "mirrored": true },
+  "home": "house",
+  "settings": "settings"
+}
