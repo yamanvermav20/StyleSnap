@@ -23,7 +23,7 @@
     "@tanstack/react-start": "1.168.61",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "4.3.3"
+    "tailwindcss": "4.3.5"
   },
   "devDependencies": {
     "@tanstack/router-cli": "1.167.41",
