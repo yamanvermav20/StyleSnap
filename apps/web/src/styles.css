@@ -7,3 +7,30 @@
 html {
   font-family: var(--font-sans);
 }
+
+dialog {
+  width: min(100% - var(--spacing-xl), var(--container-md));
+  max-height: calc(100% - var(--spacing-xl));
+  margin: auto;
+  overflow: auto;
+  border: none;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-high);
+}
+
+dialog::backdrop {
+  background: var(--color-scrim);
+}
+
+/* Sits above the phone section bar. */
+.toast-offset {
+  bottom: calc(var(--spacing-touch-target) + var(--spacing-xl));
+}
+
+@media (min-width: 48rem) {
+  .toast-offset {
+    bottom: var(--spacing-xl);
+  }
+}

@@ -2,6 +2,22 @@
 
 A dated log of product and technical decisions, and of assumptions made along the way. Newest first.
 
+## 2026-11-18: StyleSnap
+
+- **Product.** The starter became StyleSnap, a fashion and outfit discovery app (PRODUCT.md). Home was replaced by Feed (the Discover tab); Settings is kept and opens from Feed.
+- **Consistency is `strict`**, as asked: every feature on every platform, no `n/a`. Navigation chrome and controls stay native (DESIGN.md, Components).
+- **Navigation.** Four top-level sections: Discover, Search, Collections and Wardrobe (tabs on mobile, header links on web). Each mobile tab keeps its own back stack (spec/navigation.md).
+- **Backend.** A real backend from day one: backend/ is Express 5 on Node's built-in SQLite (`node:sqlite`, Node 22.13 or later, so there's no native module to compile). It implements contracts/api.json exactly and seeds 8 categories, 30 outfits, 3 collections and 10 wardrobe items on first start (`make run-backend`, `make seed-backend` to reset, `make check-backend` to test). There's one anonymous user and no auth.
+- **The apps call the API through the generated clients.** `apiBaseUrl` is set in contracts/config.json, so `make gen` emits `ApiClient.swift`, `ApiClient.kt` and the fetch helpers in `api.ts`. Each feature's repository interface (`CatalogRepository`, `CollectionsRepository`, `WardrobeRepository`) has an `Api…` implementation that wraps the generated client, used by `AppContainer.live()`, and an `InMemory…` implementation for previews and tests. Nothing is cached on the device; every screen needs the backend.
+- **Port 8787, not 8080.** Another local project already listens on 8080 on this machine. Development uses `http://127.0.0.1:8787`; the Android emulator reaches it through `make android-reverse` (`adb reverse tcp:8787 tcp:8787`).
+- **Schema names.** The collection model is `OutfitCollection`, because `Collection` shadows Swift's `Collection` protocol and Kotlin's `kotlin.collections.Collection`. The error body is `ErrorResponse`, because the generated clients already declare an `ApiError` type.
+- **The text filter on `listOutfits` is `search`, not `query`.** A parameter named `query` collides with the local variable of the same name in the generated TypeScript and Kotlin clients (a geeknative codegen bug to report upstream).
+- **Photos** are Unsplash images (https://unsplash.com/license) referenced by URL in the seed data; each was checked to load. Wardrobe photos come from a fixed photo library (`listWardrobePhotos`) instead of uploads.
+- **Image loading.** iOS uses `AsyncImage` and web uses `<img loading="lazy">`, with no new dependencies. Android adds Coil 3 (`coil-compose` and `coil-network-okhttp`), as the geeknative demo apps do, because Compose has no built-in remote image loader.
+- **Cleartext HTTP in development only.** The development API is plain HTTP on 127.0.0.1. iOS and Android allow cleartext to that host only; staging and production use HTTPS.
+- **Test fixtures.** The in-memory repositories on every platform hold the same small fixture, taken from backend/src/seed-data.js: categories `streetwear` and `minimal`; outfits `outfit-01` (streetwear), `outfit-05` and `outfit-07` (minimal); collection `collection-weekend` containing `outfit-01`; wardrobe items `wardrobe-01` and `wardrobe-04`; and the photo library's tops and shoes. UI tests launch with `-uiTesting` (iOS) or use `testContainer` (web) or in-memory repositories (Android) so they don't need the backend.
+- **Showcase.** Each app opens a named screen from the launch arguments the geeknative publish script passes (`-screenshotScreen`, `-screenshotAppearance`, plus `-screenshotCategoryId`, `-screenshotOutfitId`, `-screenshotCollectionId` and `-screenshotWardrobeItemId`; Android reads intent extras of the same names). Screenshots use the live, freshly seeded backend, so all three platforms show the same data. previews/shots.json lists every screen.
+
 ## 2026-10-30: Cross-platform consistency audit
 
 Intentional differences between the apps, found while auditing them against each other:

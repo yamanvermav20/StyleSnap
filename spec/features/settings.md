@@ -2,9 +2,9 @@
 id: settings
 title: Settings
 status:
-  ios: done
-  android: done
-  web: done
+  ios: in-progress
+  android: in-progress
+  web: in-progress
 ---
 
 # Settings
@@ -15,7 +15,7 @@ Lets the user choose the app's appearance and see which version they're running.
 
 ## Screens and states
 
-**Settings**, opened from Home.
+**Settings**, opened from the Settings entry on Feed (on web, the gear in the site header).
 
 - Section `settings.appearance.title` with three choices: System, Light and Dark. The current choice is selected.
 - Section `settings.about.title` showing `settings.about.version` with the app version and build number.

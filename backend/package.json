@@ -1,0 +1,18 @@
+{
+  "name": "stylesnap-backend",
+  "private": true,
+  "type": "module",
+  "description": "StyleSnap REST API: Express and SQLite (node:sqlite), implementing contracts/api.json.",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/seed-cli.js",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

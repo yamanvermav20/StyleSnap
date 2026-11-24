@@ -24,6 +24,27 @@ extension ButtonStyle where Self == PrimaryButtonStyle {
     static var primary: PrimaryButtonStyle { PrimaryButtonStyle() }
 }
 
+/// A quieter pill: `onPrimaryContainer` on `primaryContainer`, for an action that's already on
+/// (Saved on Outfit detail).
+struct TonalButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(AppTypography.label)
+            .foregroundStyle(AppColors.onPrimaryContainer)
+            .padding(.horizontal, AppSpacing.lg)
+            .frame(minHeight: AppSize.touchTarget)
+            .background(AppColors.primaryContainer, in: .capsule)
+            .opacity(isEnabled ? (configuration.isPressed ? 0.8 : 1) : 0.4)
+            .contentShape(.capsule)
+    }
+}
+
+extension ButtonStyle where Self == TonalButtonStyle {
+    static var tonal: TonalButtonStyle { TonalButtonStyle() }
+}
+
 #Preview {
     VStack(spacing: AppSpacing.lg) {
         Button(Strings.settingsTitle) {}.buttonStyle(.primary)

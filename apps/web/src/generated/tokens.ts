@@ -12,9 +12,10 @@ export const AppSpacing = {
 
 /** Corner radii, in px. */
 export const AppRadius = {
-  sm: 6,
-  md: 10,
-  lg: 16,
+  sm: 8,
+  md: 12,
+  lg: 20,
+  xl: 28,
   full: 9999,
 } as const
 
@@ -28,6 +29,10 @@ export const AppIconSize = {
 /** Fixed sizes (touch targets and the like), in px. */
 export const AppSize = {
   touchTarget: 48,
+  thumbnail: 72,
+  categoryTile: 132,
+  heroImage: 480,
+  cardImage: 240,
 } as const
 
 /** Each text style's size in px at the default text size (styles themselves are the text-* classes). */

@@ -3,17 +3,299 @@ import Foundation
 
 /// User-facing copy. Keys and placeholders match the Android and web apps.
 nonisolated enum Strings {
+    /// Check back soon for new looks.
+    static var categoryEmptyBody: String { NSLocalizedString("category.emptyBody", comment: "") }
+
+    /// Nothing in this style yet
+    static var categoryEmptyTitle: String { NSLocalizedString("category.emptyTitle", comment: "") }
+
+    /// The collection is deleted. The outfits in it stay in StyleSnap.
+    static var collectionDetailDeleteBody: String { NSLocalizedString("collectionDetail.deleteBody", comment: "") }
+
+    /// Delete this collection?
+    static var collectionDetailDeleteTitle: String { NSLocalizedString("collectionDetail.deleteTitle", comment: "") }
+
+    /// Tap Save on any outfit to add it here.
+    static var collectionDetailEmptyBody: String { NSLocalizedString("collectionDetail.emptyBody", comment: "") }
+
+    /// No outfits saved yet
+    static var collectionDetailEmptyTitle: String { NSLocalizedString("collectionDetail.emptyTitle", comment: "") }
+
+    /// This collection was deleted.
+    static var collectionDetailNotFound: String { NSLocalizedString("collectionDetail.notFound", comment: "") }
+
+    /// Remove from collection
+    static var collectionDetailRemoveOutfit: String { NSLocalizedString("collectionDetail.removeOutfit", comment: "") }
+
+    /// New collection
+    static var collectionEditorCreateTitle: String { NSLocalizedString("collectionEditor.createTitle", comment: "") }
+
+    /// Description
+    static var collectionEditorDescription: String { NSLocalizedString("collectionEditor.description", comment: "") }
+
+    /// What's this collection for?
+    static var collectionEditorDescriptionPlaceholder: String { NSLocalizedString("collectionEditor.descriptionPlaceholder", comment: "") }
+
+    /// Edit collection
+    static var collectionEditorEditTitle: String { NSLocalizedString("collectionEditor.editTitle", comment: "") }
+
+    /// Name
+    static var collectionEditorName: String { NSLocalizedString("collectionEditor.name", comment: "") }
+
+    /// Weekend looks
+    static var collectionEditorNamePlaceholder: String { NSLocalizedString("collectionEditor.namePlaceholder", comment: "") }
+
+    /// Give your collection a name.
+    static var collectionEditorNameRequired: String { NSLocalizedString("collectionEditor.nameRequired", comment: "") }
+
+    /// Use 40 characters or fewer.
+    static var collectionEditorNameTooLong: String { NSLocalizedString("collectionEditor.nameTooLong", comment: "") }
+
+    /// New collection
+    static var collectionsAdd: String { NSLocalizedString("collections.add", comment: "") }
+
+    /// Create a collection
+    static var collectionsEmptyAction: String { NSLocalizedString("collections.emptyAction", comment: "") }
+
+    /// Create a collection, then save outfits to it from any look.
+    static var collectionsEmptyBody: String { NSLocalizedString("collections.emptyBody", comment: "") }
+
+    /// Save looks you love
+    static var collectionsEmptyTitle: String { NSLocalizedString("collections.emptyTitle", comment: "") }
+
+    /// Collections
+    static var collectionsTitle: String { NSLocalizedString("collections.title", comment: "") }
+
     /// Back
     static var commonBack: String { NSLocalizedString("common.back", comment: "") }
 
+    /// Cancel
+    static var commonCancel: String { NSLocalizedString("common.cancel", comment: "") }
+
+    /// Close
+    static var commonClose: String { NSLocalizedString("common.close", comment: "") }
+
+    /// Delete
+    static var commonDelete: String { NSLocalizedString("common.delete", comment: "") }
+
+    /// Couldn't delete it. Try again.
+    static var commonDeleteFailed: String { NSLocalizedString("common.deleteFailed", comment: "") }
+
+    /// Done
+    static var commonDone: String { NSLocalizedString("common.done", comment: "") }
+
+    /// Edit
+    static var commonEdit: String { NSLocalizedString("common.edit", comment: "") }
+
+    /// Check that you're online and the StyleSnap server is running, then try again.
+    static var commonErrorBody: String { NSLocalizedString("common.errorBody", comment: "") }
+
+    /// Couldn't load this
+    static var commonErrorTitle: String { NSLocalizedString("common.errorTitle", comment: "") }
+
+    /// {count} items
+    static func commonItemCount(count: Int) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("common.itemCount", comment: ""), count)
+    }
+
+    /// {count} likes
+    static func commonLikes(count: Int) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("common.likes", comment: ""), count)
+    }
+
+    /// Loading
+    static var commonLoading: String { NSLocalizedString("common.loading", comment: "") }
+
+    /// {count} outfits
+    static func commonOutfitCount(count: Int) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("common.outfitCount", comment: ""), count)
+    }
+
+    /// ${price}
+    static func commonPrice(price: String) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("common.price", comment: ""), price)
+    }
+
+    /// Try again
+    static var commonRetry: String { NSLocalizedString("common.retry", comment: "") }
+
+    /// Save
+    static var commonSave: String { NSLocalizedString("common.save", comment: "") }
+
+    /// Couldn't save your changes. Try again.
+    static var commonSaveFailed: String { NSLocalizedString("common.saveFailed", comment: "") }
+
+    /// See all
+    static var commonSeeAll: String { NSLocalizedString("common.seeAll", comment: "") }
+
+    /// by {name}
+    static func feedByCreator(name: String) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("feed.byCreator", comment: ""), name)
+    }
+
+    /// Shop by style
+    static var feedCategoriesTitle: String { NSLocalizedString("feed.categoriesTitle", comment: "") }
+
+    /// New outfits will show up here.
+    static var feedEmptyBody: String { NSLocalizedString("feed.emptyBody", comment: "") }
+
+    /// No looks yet
+    static var feedEmptyTitle: String { NSLocalizedString("feed.emptyTitle", comment: "") }
+
     /// Settings
-    static var homeOpenSettings: String { NSLocalizedString("home.openSettings", comment: "") }
+    static var feedOpenSettings: String { NSLocalizedString("feed.openSettings", comment: "") }
 
-    /// This app is built natively for iOS, Android and the web from one shared spec. Describe what you want to build to your coding agent, and it will build it for all three.
-    static var homeWelcomeBody: String { NSLocalizedString("home.welcomeBody", comment: "") }
+    /// Discover
+    static var feedTitle: String { NSLocalizedString("feed.title", comment: "") }
 
-    /// You're all set
-    static var homeWelcomeTitle: String { NSLocalizedString("home.welcomeTitle", comment: "") }
+    /// Trending looks
+    static var feedTrendingTitle: String { NSLocalizedString("feed.trendingTitle", comment: "") }
+
+    /// Accessories
+    static var itemTypeAccessory: String { NSLocalizedString("itemType.accessory", comment: "") }
+
+    /// Bottoms
+    static var itemTypeBottom: String { NSLocalizedString("itemType.bottom", comment: "") }
+
+    /// Dresses
+    static var itemTypeDress: String { NSLocalizedString("itemType.dress", comment: "") }
+
+    /// Outerwear
+    static var itemTypeOuterwear: String { NSLocalizedString("itemType.outerwear", comment: "") }
+
+    /// Shoes
+    static var itemTypeShoes: String { NSLocalizedString("itemType.shoes", comment: "") }
+
+    /// Tops
+    static var itemTypeTop: String { NSLocalizedString("itemType.top", comment: "") }
+
+    /// Date night
+    static var occasionDate: String { NSLocalizedString("occasion.date", comment: "") }
+
+    /// Everyday
+    static var occasionEveryday: String { NSLocalizedString("occasion.everyday", comment: "") }
+
+    /// Party
+    static var occasionParty: String { NSLocalizedString("occasion.party", comment: "") }
+
+    /// Sport
+    static var occasionSport: String { NSLocalizedString("occasion.sport", comment: "") }
+
+    /// Travel
+    static var occasionTravel: String { NSLocalizedString("occasion.travel", comment: "") }
+
+    /// Work
+    static var occasionWork: String { NSLocalizedString("occasion.work", comment: "") }
+
+    /// Style
+    static var outfitDetailCategory: String { NSLocalizedString("outfitDetail.category", comment: "") }
+
+    /// Details
+    static var outfitDetailDetailsTitle: String { NSLocalizedString("outfitDetail.detailsTitle", comment: "") }
+
+    /// Shop the look
+    static var outfitDetailItemsTitle: String { NSLocalizedString("outfitDetail.itemsTitle", comment: "") }
+
+    /// This outfit is no longer available.
+    static var outfitDetailNotFound: String { NSLocalizedString("outfitDetail.notFound", comment: "") }
+
+    /// Occasion
+    static var outfitDetailOccasion: String { NSLocalizedString("outfitDetail.occasion", comment: "") }
+
+    /// Photo {position} of {total}
+    static func outfitDetailPhotoPosition(position: Int, total: Int) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("outfitDetail.photoPosition", comment: ""), position, total)
+    }
+
+    /// Save
+    static var outfitDetailSave: String { NSLocalizedString("outfitDetail.save", comment: "") }
+
+    /// Saved
+    static var outfitDetailSaved: String { NSLocalizedString("outfitDetail.saved", comment: "") }
+
+    /// Season
+    static var outfitDetailSeason: String { NSLocalizedString("outfitDetail.season", comment: "") }
+
+    /// Outfit
+    static var outfitDetailTitle: String { NSLocalizedString("outfitDetail.title", comment: "") }
+
+    /// Saved to {name}
+    static func saveToCollectionAdded(name: String) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("saveToCollection.added", comment: ""), name)
+    }
+
+    /// You don't have any collections yet. Create one to start saving looks.
+    static var saveToCollectionEmptyBody: String { NSLocalizedString("saveToCollection.emptyBody", comment: "") }
+
+    /// New collection
+    static var saveToCollectionNewCollection: String { NSLocalizedString("saveToCollection.newCollection", comment: "") }
+
+    /// Removed from {name}
+    static func saveToCollectionRemoved(name: String) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("saveToCollection.removed", comment: ""), name)
+    }
+
+    /// Save to collection
+    static var saveToCollectionTitle: String { NSLocalizedString("saveToCollection.title", comment: "") }
+
+    /// Any
+    static var searchAny: String { NSLocalizedString("search.any", comment: "") }
+
+    /// Style
+    static var searchCategory: String { NSLocalizedString("search.category", comment: "") }
+
+    /// Clear filters
+    static var searchClearFilters: String { NSLocalizedString("search.clearFilters", comment: "") }
+
+    /// Try a different search or clear some filters.
+    static var searchEmptyBody: String { NSLocalizedString("search.emptyBody", comment: "") }
+
+    /// No outfits match
+    static var searchEmptyTitle: String { NSLocalizedString("search.emptyTitle", comment: "") }
+
+    /// Filters
+    static var searchFilters: String { NSLocalizedString("search.filters", comment: "") }
+
+    /// Occasion
+    static var searchOccasion: String { NSLocalizedString("search.occasion", comment: "") }
+
+    /// Search outfits, brands, styles
+    static var searchPlaceholder: String { NSLocalizedString("search.placeholder", comment: "") }
+
+    /// {count} results
+    static func searchResultCount(count: Int) -> String {
+        String.localizedStringWithFormat(NSLocalizedString("search.resultCount", comment: ""), count)
+    }
+
+    /// Season
+    static var searchSeason: String { NSLocalizedString("search.season", comment: "") }
+
+    /// Sort by
+    static var searchSort: String { NSLocalizedString("search.sort", comment: "") }
+
+    /// Newest
+    static var searchSortNewest: String { NSLocalizedString("search.sortNewest", comment: "") }
+
+    /// Most popular
+    static var searchSortPopular: String { NSLocalizedString("search.sortPopular", comment: "") }
+
+    /// Search
+    static var searchTitle: String { NSLocalizedString("search.title", comment: "") }
+
+    /// All season
+    static var seasonAllSeason: String { NSLocalizedString("season.allSeason", comment: "") }
+
+    /// Fall
+    static var seasonFall: String { NSLocalizedString("season.fall", comment: "") }
+
+    /// Spring
+    static var seasonSpring: String { NSLocalizedString("season.spring", comment: "") }
+
+    /// Summer
+    static var seasonSummer: String { NSLocalizedString("season.summer", comment: "") }
+
+    /// Winter
+    static var seasonWinter: String { NSLocalizedString("season.winter", comment: "") }
 
     /// About
     static var settingsAboutTitle: String { NSLocalizedString("settings.about.title", comment: "") }
@@ -37,4 +319,100 @@ nonisolated enum Strings {
 
     /// Settings
     static var settingsTitle: String { NSLocalizedString("settings.title", comment: "") }
+
+    /// Collections
+    static var tabsCollections: String { NSLocalizedString("tabs.collections", comment: "") }
+
+    /// Discover
+    static var tabsDiscover: String { NSLocalizedString("tabs.discover", comment: "") }
+
+    /// Search
+    static var tabsSearch: String { NSLocalizedString("tabs.search", comment: "") }
+
+    /// Wardrobe
+    static var tabsWardrobe: String { NSLocalizedString("tabs.wardrobe", comment: "") }
+
+    /// Add item
+    static var wardrobeAdd: String { NSLocalizedString("wardrobe.add", comment: "") }
+
+    /// All
+    static var wardrobeAll: String { NSLocalizedString("wardrobe.all", comment: "") }
+
+    /// Add the clothes you own to plan outfits around them.
+    static var wardrobeEmptyBody: String { NSLocalizedString("wardrobe.emptyBody", comment: "") }
+
+    /// You haven't added any items of this type.
+    static var wardrobeEmptyFilteredBody: String { NSLocalizedString("wardrobe.emptyFilteredBody", comment: "") }
+
+    /// Nothing here yet
+    static var wardrobeEmptyFilteredTitle: String { NSLocalizedString("wardrobe.emptyFilteredTitle", comment: "") }
+
+    /// Build your wardrobe
+    static var wardrobeEmptyTitle: String { NSLocalizedString("wardrobe.emptyTitle", comment: "") }
+
+    /// Favorite
+    static var wardrobeFavorite: String { NSLocalizedString("wardrobe.favorite", comment: "") }
+
+    /// Wardrobe
+    static var wardrobeTitle: String { NSLocalizedString("wardrobe.title", comment: "") }
+
+    /// Brand
+    static var wardrobeEditorBrand: String { NSLocalizedString("wardrobeEditor.brand", comment: "") }
+
+    /// Optional
+    static var wardrobeEditorBrandPlaceholder: String { NSLocalizedString("wardrobeEditor.brandPlaceholder", comment: "") }
+
+    /// Color
+    static var wardrobeEditorColor: String { NSLocalizedString("wardrobeEditor.color", comment: "") }
+
+    /// Optional
+    static var wardrobeEditorColorPlaceholder: String { NSLocalizedString("wardrobeEditor.colorPlaceholder", comment: "") }
+
+    /// New item
+    static var wardrobeEditorCreateTitle: String { NSLocalizedString("wardrobeEditor.createTitle", comment: "") }
+
+    /// Delete item
+    static var wardrobeEditorDelete: String { NSLocalizedString("wardrobeEditor.delete", comment: "") }
+
+    /// It's removed from your wardrobe. This can't be undone.
+    static var wardrobeEditorDeleteBody: String { NSLocalizedString("wardrobeEditor.deleteBody", comment: "") }
+
+    /// Delete this item?
+    static var wardrobeEditorDeleteTitle: String { NSLocalizedString("wardrobeEditor.deleteTitle", comment: "") }
+
+    /// Edit item
+    static var wardrobeEditorEditTitle: String { NSLocalizedString("wardrobeEditor.editTitle", comment: "") }
+
+    /// Favorite
+    static var wardrobeEditorFavorite: String { NSLocalizedString("wardrobeEditor.favorite", comment: "") }
+
+    /// Name
+    static var wardrobeEditorName: String { NSLocalizedString("wardrobeEditor.name", comment: "") }
+
+    /// White linen shirt
+    static var wardrobeEditorNamePlaceholder: String { NSLocalizedString("wardrobeEditor.namePlaceholder", comment: "") }
+
+    /// Give the item a name.
+    static var wardrobeEditorNameRequired: String { NSLocalizedString("wardrobeEditor.nameRequired", comment: "") }
+
+    /// This item was deleted.
+    static var wardrobeEditorNotFound: String { NSLocalizedString("wardrobeEditor.notFound", comment: "") }
+
+    /// Notes
+    static var wardrobeEditorNotes: String { NSLocalizedString("wardrobeEditor.notes", comment: "") }
+
+    /// Fit, care, what it goes with
+    static var wardrobeEditorNotesPlaceholder: String { NSLocalizedString("wardrobeEditor.notesPlaceholder", comment: "") }
+
+    /// Photo
+    static var wardrobeEditorPhoto: String { NSLocalizedString("wardrobeEditor.photo", comment: "") }
+
+    /// Choose a photo.
+    static var wardrobeEditorPhotoRequired: String { NSLocalizedString("wardrobeEditor.photoRequired", comment: "") }
+
+    /// Season
+    static var wardrobeEditorSeason: String { NSLocalizedString("wardrobeEditor.season", comment: "") }
+
+    /// Type
+    static var wardrobeEditorType: String { NSLocalizedString("wardrobeEditor.type", comment: "") }
 }

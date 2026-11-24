@@ -7,18 +7,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -30,9 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.R
 import app.core.designsystem.AppCard
+import app.core.designsystem.AppScaffold
 import app.core.designsystem.AppTheme
-import app.generated.AppIconSize
-import app.generated.AppIcons
 import app.generated.AppSize
 import app.generated.AppSpacing
 import app.generated.AppTypography
@@ -43,20 +36,12 @@ fun SettingsScreen(viewModel: SettingsViewModel, onBack: () -> Unit) {
     SettingsContent(state = state, onSelectAppearance = viewModel::selectAppearance, onBack = onBack)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SettingsContent(state: SettingsUiState, onSelectAppearance: (Appearance) -> Unit, onBack: () -> Unit) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.settings_title)) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(AppIcons.back, contentDescription = stringResource(R.string.common_back), modifier = Modifier.size(AppIconSize.md))
-                    }
-                },
-            )
-        },
+    AppScaffold(
+        title = stringResource(R.string.settings_title),
+        onNavigate = onBack,
+        navigationDescription = stringResource(R.string.common_back),
     ) { padding ->
         Column(
             modifier = Modifier

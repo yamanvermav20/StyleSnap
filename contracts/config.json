@@ -2,6 +2,14 @@
   "$comment": "Settings that differ per environment, and the names of secrets whose values live in .env (never here).",
   "$example": "values: { \"apiBaseUrl\": { \"type\": \"url\", \"description\": \"Backend API.\", \"development\": \"http://localhost:8080\", \"staging\": \"https://staging.example.com\", \"production\": \"https://api.example.com\" } }. Types: string, url, boolean, int. secrets: { \"mapsApiKey\": { \"type\": \"string\", \"description\": \"Maps SDK key\" } }.",
   "environments": ["development", "staging", "production"],
-  "values": {},
+  "values": {
+    "apiBaseUrl": {
+      "type": "url",
+      "description": "StyleSnap backend (backend/). In development the Android emulator reaches it through `make android-reverse` (adb reverse tcp:8787 tcp:8787).",
+      "development": "http://127.0.0.1:8787",
+      "staging": "https://staging-api.stylesnap.example.com",
+      "production": "https://api.stylesnap.example.com"
+    }
+  },
   "secrets": {}
 }

@@ -2,8 +2,8 @@
 
 /** The app's name, identifier and version, shared with the iOS and Android apps. */
 export const AppIdentity = {
-  name: "ShoppingApp",
-  id: "com.example.mynewapp",
+  name: "StyleSnap",
+  id: "com.example.stylesnap",
   version: "1.0.0",
   build: 1,
 } as const

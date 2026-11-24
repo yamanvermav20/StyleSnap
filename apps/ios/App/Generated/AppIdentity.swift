@@ -2,8 +2,8 @@
 
 /// The app's name, identifier and version, shared with the Android and web apps.
 nonisolated enum AppIdentity {
-    static let name = "ShoppingApp"
-    static let id = "com.example.mynewapp"
+    static let name = "StyleSnap"
+    static let id = "com.example.stylesnap"
     static let version = "1.0.0"
     static let build = 1
 }

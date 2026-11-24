@@ -10,11 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as CategoriesCategoryIdRouteImport } from './routes/categories/$categoryId'
+import { Route as CollectionsIndexRouteImport } from './routes/collections/index'
+import { Route as CollectionsCollectionIdRouteRouteImport } from './routes/collections/$collectionId/route'
+import { Route as CollectionsNewRouteImport } from './routes/collections/new'
+import { Route as OutfitsOutfitIdRouteImport } from './routes/outfits/$outfitId'
+import { Route as WardrobeIndexRouteImport } from './routes/wardrobe/index'
+import { Route as WardrobeItemIdRouteImport } from './routes/wardrobe/$itemId'
+import { Route as WardrobeNewRouteImport } from './routes/wardrobe/new'
+import { Route as CollectionsCollectionIdIndexRouteImport } from './routes/collections/$collectionId/index'
+import { Route as CollectionsCollectionIdEditRouteImport } from './routes/collections/$collectionId/edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -22,31 +38,164 @@ const SettingsRoute = SettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriesCategoryIdRoute = CategoriesCategoryIdRouteImport.update({
+  id: '/categories/$categoryId',
+  path: '/categories/$categoryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/collections/',
+  path: '/collections/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsCollectionIdRouteRoute =
+  CollectionsCollectionIdRouteRouteImport.update({
+    id: '/collections/$collectionId',
+    path: '/collections/$collectionId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CollectionsNewRoute = CollectionsNewRouteImport.update({
+  id: '/collections/new',
+  path: '/collections/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutfitsOutfitIdRoute = OutfitsOutfitIdRouteImport.update({
+  id: '/outfits/$outfitId',
+  path: '/outfits/$outfitId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WardrobeIndexRoute = WardrobeIndexRouteImport.update({
+  id: '/wardrobe/',
+  path: '/wardrobe/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WardrobeItemIdRoute = WardrobeItemIdRouteImport.update({
+  id: '/wardrobe/$itemId',
+  path: '/wardrobe/$itemId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WardrobeNewRoute = WardrobeNewRouteImport.update({
+  id: '/wardrobe/new',
+  path: '/wardrobe/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsCollectionIdIndexRoute =
+  CollectionsCollectionIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => CollectionsCollectionIdRouteRoute,
+  } as any)
+const CollectionsCollectionIdEditRoute =
+  CollectionsCollectionIdEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => CollectionsCollectionIdRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
+  '/collections/$collectionId': typeof CollectionsCollectionIdRouteRouteWithChildren
+  '/categories/$categoryId': typeof CategoriesCategoryIdRoute
+  '/collections/new': typeof CollectionsNewRoute
+  '/outfits/$outfitId': typeof OutfitsOutfitIdRoute
+  '/wardrobe/$itemId': typeof WardrobeItemIdRoute
+  '/wardrobe/new': typeof WardrobeNewRoute
+  '/collections/': typeof CollectionsIndexRoute
+  '/wardrobe/': typeof WardrobeIndexRoute
+  '/collections/$collectionId/edit': typeof CollectionsCollectionIdEditRoute
+  '/collections/$collectionId/': typeof CollectionsCollectionIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
+  '/categories/$categoryId': typeof CategoriesCategoryIdRoute
+  '/collections/new': typeof CollectionsNewRoute
+  '/outfits/$outfitId': typeof OutfitsOutfitIdRoute
+  '/wardrobe/$itemId': typeof WardrobeItemIdRoute
+  '/wardrobe/new': typeof WardrobeNewRoute
+  '/collections': typeof CollectionsIndexRoute
+  '/wardrobe': typeof WardrobeIndexRoute
+  '/collections/$collectionId/edit': typeof CollectionsCollectionIdEditRoute
+  '/collections/$collectionId': typeof CollectionsCollectionIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
+  '/collections/$collectionId': typeof CollectionsCollectionIdRouteRouteWithChildren
+  '/categories/$categoryId': typeof CategoriesCategoryIdRoute
+  '/collections/new': typeof CollectionsNewRoute
+  '/outfits/$outfitId': typeof OutfitsOutfitIdRoute
+  '/wardrobe/$itemId': typeof WardrobeItemIdRoute
+  '/wardrobe/new': typeof WardrobeNewRoute
+  '/collections/': typeof CollectionsIndexRoute
+  '/wardrobe/': typeof WardrobeIndexRoute
+  '/collections/$collectionId/edit': typeof CollectionsCollectionIdEditRoute
+  '/collections/$collectionId/': typeof CollectionsCollectionIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/settings'
+  fullPaths:
+    | '/'
+    | '/search'
+    | '/settings'
+    | '/collections/$collectionId'
+    | '/categories/$categoryId'
+    | '/collections/new'
+    | '/outfits/$outfitId'
+    | '/wardrobe/$itemId'
+    | '/wardrobe/new'
+    | '/collections/'
+    | '/wardrobe/'
+    | '/collections/$collectionId/edit'
+    | '/collections/$collectionId/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/settings'
-  id: '__root__' | '/' | '/settings'
+  to:
+    | '/'
+    | '/search'
+    | '/settings'
+    | '/categories/$categoryId'
+    | '/collections/new'
+    | '/outfits/$outfitId'
+    | '/wardrobe/$itemId'
+    | '/wardrobe/new'
+    | '/collections'
+    | '/wardrobe'
+    | '/collections/$collectionId/edit'
+    | '/collections/$collectionId'
+  id:
+    | '__root__'
+    | '/'
+    | '/search'
+    | '/settings'
+    | '/collections/$collectionId'
+    | '/categories/$categoryId'
+    | '/collections/new'
+    | '/outfits/$outfitId'
+    | '/wardrobe/$itemId'
+    | '/wardrobe/new'
+    | '/collections/'
+    | '/wardrobe/'
+    | '/collections/$collectionId/edit'
+    | '/collections/$collectionId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SearchRoute: typeof SearchRoute
   SettingsRoute: typeof SettingsRoute
+  CollectionsCollectionIdRouteRoute: typeof CollectionsCollectionIdRouteRouteWithChildren
+  CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
+  CollectionsNewRoute: typeof CollectionsNewRoute
+  OutfitsOutfitIdRoute: typeof OutfitsOutfitIdRoute
+  WardrobeItemIdRoute: typeof WardrobeItemIdRoute
+  WardrobeNewRoute: typeof WardrobeNewRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
+  WardrobeIndexRoute: typeof WardrobeIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +207,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -65,12 +221,108 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categories/$categoryId': {
+      id: '/categories/$categoryId'
+      path: '/categories/$categoryId'
+      fullPath: '/categories/$categoryId'
+      preLoaderRoute: typeof CategoriesCategoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/collections'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$collectionId': {
+      id: '/collections/$collectionId'
+      path: '/collections/$collectionId'
+      fullPath: '/collections/$collectionId'
+      preLoaderRoute: typeof CollectionsCollectionIdRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/new': {
+      id: '/collections/new'
+      path: '/collections/new'
+      fullPath: '/collections/new'
+      preLoaderRoute: typeof CollectionsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outfits/$outfitId': {
+      id: '/outfits/$outfitId'
+      path: '/outfits/$outfitId'
+      fullPath: '/outfits/$outfitId'
+      preLoaderRoute: typeof OutfitsOutfitIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wardrobe/': {
+      id: '/wardrobe/'
+      path: '/wardrobe'
+      fullPath: '/wardrobe/'
+      preLoaderRoute: typeof WardrobeIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wardrobe/$itemId': {
+      id: '/wardrobe/$itemId'
+      path: '/wardrobe/$itemId'
+      fullPath: '/wardrobe/$itemId'
+      preLoaderRoute: typeof WardrobeItemIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wardrobe/new': {
+      id: '/wardrobe/new'
+      path: '/wardrobe/new'
+      fullPath: '/wardrobe/new'
+      preLoaderRoute: typeof WardrobeNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$collectionId/': {
+      id: '/collections/$collectionId/'
+      path: '/'
+      fullPath: '/collections/$collectionId/'
+      preLoaderRoute: typeof CollectionsCollectionIdIndexRouteImport
+      parentRoute: typeof CollectionsCollectionIdRouteRoute
+    }
+    '/collections/$collectionId/edit': {
+      id: '/collections/$collectionId/edit'
+      path: '/edit'
+      fullPath: '/collections/$collectionId/edit'
+      preLoaderRoute: typeof CollectionsCollectionIdEditRouteImport
+      parentRoute: typeof CollectionsCollectionIdRouteRoute
+    }
   }
 }
 
+interface CollectionsCollectionIdRouteRouteChildren {
+  CollectionsCollectionIdEditRoute: typeof CollectionsCollectionIdEditRoute
+  CollectionsCollectionIdIndexRoute: typeof CollectionsCollectionIdIndexRoute
+}
+
+const CollectionsCollectionIdRouteRouteChildren: CollectionsCollectionIdRouteRouteChildren =
+  {
+    CollectionsCollectionIdEditRoute: CollectionsCollectionIdEditRoute,
+    CollectionsCollectionIdIndexRoute: CollectionsCollectionIdIndexRoute,
+  }
+
+const CollectionsCollectionIdRouteRouteWithChildren =
+  CollectionsCollectionIdRouteRoute._addFileChildren(
+    CollectionsCollectionIdRouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SearchRoute: SearchRoute,
   SettingsRoute: SettingsRoute,
+  CollectionsCollectionIdRouteRoute:
+    CollectionsCollectionIdRouteRouteWithChildren,
+  CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,
+  CollectionsNewRoute: CollectionsNewRoute,
+  OutfitsOutfitIdRoute: OutfitsOutfitIdRoute,
+  WardrobeItemIdRoute: WardrobeItemIdRoute,
+  WardrobeNewRoute: WardrobeNewRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
+  WardrobeIndexRoute: WardrobeIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

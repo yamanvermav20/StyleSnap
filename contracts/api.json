@@ -1,0 +1,1101 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "StyleSnap API",
+    "version": "1.0.0",
+    "description": "Outfit discovery, saved collections and the personal wardrobe. Served by backend/ (Express and SQLite). One anonymous user: there is no authentication yet."
+  },
+  "paths": {
+    "/categories": {
+      "get": {
+        "operationId": "listCategories",
+        "summary": "All outfit categories, in display order.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/outfits": {
+      "get": {
+        "operationId": "listOutfits",
+        "summary": "Outfits, filtered and sorted. Every filter is optional and they combine with AND.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Case-insensitive match on title, description, tags, creator and item names or brands.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "description": "allSeason outfits match every season.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "fall",
+                "winter",
+                "allSeason"
+              ]
+            }
+          },
+          {
+            "name": "occasion",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "everyday",
+                "work",
+                "party",
+                "date",
+                "travel",
+                "sport"
+              ]
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "popular (most likes first, the default) or newest.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "popular",
+                "newest"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Outfit"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A filter has an unknown value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/outfits/{outfitId}": {
+      "get": {
+        "operationId": "getOutfit",
+        "parameters": [
+          {
+            "name": "outfitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Outfit"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No outfit has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections": {
+      "get": {
+        "operationId": "listCollections",
+        "summary": "Saved collections, most recently updated first.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OutfitCollection"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCollection",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutfitCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The name is empty or too long.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections/{collectionId}": {
+      "get": {
+        "operationId": "getCollection",
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutfitCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No collection has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateCollection",
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutfitCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The name is empty or too long.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No collection has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCollection",
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "No collection has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections/{collectionId}/outfits": {
+      "get": {
+        "operationId": "listCollectionOutfits",
+        "summary": "The outfits in a collection, most recently added first.",
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Outfit"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No collection has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "addOutfitToCollection",
+        "summary": "Adds an outfit. Adding one that is already there changes nothing.",
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionOutfitInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutfitCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No outfit has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No collection has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections/{collectionId}/outfits/{outfitId}": {
+      "delete": {
+        "operationId": "removeOutfitFromCollection",
+        "summary": "Removes an outfit. Removing one that is not there changes nothing.",
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "outfitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutfitCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No collection has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wardrobe": {
+      "get": {
+        "operationId": "listWardrobeItems",
+        "summary": "Wardrobe items, newest first, optionally of one type.",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "top",
+                "bottom",
+                "dress",
+                "outerwear",
+                "shoes",
+                "accessory"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WardrobeItem"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unknown type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createWardrobeItem",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WardrobeItemInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WardrobeItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A field is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wardrobe/photos": {
+      "get": {
+        "operationId": "listWardrobePhotos",
+        "summary": "Stock photos the wardrobe editor offers, grouped by item type.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WardrobePhoto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wardrobe/{itemId}": {
+      "get": {
+        "operationId": "getWardrobeItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WardrobeItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No wardrobe item has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateWardrobeItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WardrobeItemInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WardrobeItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A field is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No wardrobe item has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteWardrobeItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "No wardrobe item has this id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "validation",
+              "notFound",
+              "internal"
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "imageUrl",
+          "outfitCount"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "outfitCount": {
+            "type": "integer"
+          }
+        }
+      },
+      "OutfitItem": {
+        "type": "object",
+        "required": [
+          "name",
+          "brand",
+          "type",
+          "price",
+          "imageUrl"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "dress",
+              "outerwear",
+              "shoes",
+              "accessory"
+            ]
+          },
+          "price": {
+            "type": "number",
+            "description": "US dollars."
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "Outfit": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "description",
+          "imageUrl",
+          "gallery",
+          "categoryId",
+          "categoryName",
+          "creatorName",
+          "season",
+          "occasion",
+          "tags",
+          "likes",
+          "items",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Cover photo, portrait 3:4."
+          },
+          "gallery": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "More photos after the cover. May be empty."
+          },
+          "categoryId": {
+            "type": "string"
+          },
+          "categoryName": {
+            "type": "string"
+          },
+          "creatorName": {
+            "type": "string"
+          },
+          "season": {
+            "type": "string",
+            "enum": [
+              "spring",
+              "summer",
+              "fall",
+              "winter",
+              "allSeason"
+            ]
+          },
+          "occasion": {
+            "type": "string",
+            "enum": [
+              "everyday",
+              "work",
+              "party",
+              "date",
+              "travel",
+              "sport"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "likes": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OutfitItem"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 date-time."
+          }
+        }
+      },
+      "OutfitCollection": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "outfitIds",
+          "coverImageUrls",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "outfitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Most recently added first."
+          },
+          "coverImageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Cover photos of up to the first four outfits."
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "CollectionInput": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "1 to 40 characters after trimming."
+          },
+          "description": {
+            "type": "string",
+            "description": "Up to 140 characters. May be empty."
+          }
+        }
+      },
+      "CollectionOutfitInput": {
+        "type": "object",
+        "required": [
+          "outfitId"
+        ],
+        "properties": {
+          "outfitId": {
+            "type": "string"
+          }
+        }
+      },
+      "WardrobeItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "brand",
+          "type",
+          "color",
+          "season",
+          "imageUrl",
+          "notes",
+          "favorite",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "dress",
+              "outerwear",
+              "shoes",
+              "accessory"
+            ]
+          },
+          "color": {
+            "type": "string"
+          },
+          "season": {
+            "type": "string",
+            "enum": [
+              "spring",
+              "summer",
+              "fall",
+              "winter",
+              "allSeason"
+            ]
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "favorite": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "WardrobeItemInput": {
+        "type": "object",
+        "required": [
+          "name",
+          "brand",
+          "type",
+          "color",
+          "season",
+          "imageUrl",
+          "notes",
+          "favorite"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "1 to 60 characters after trimming."
+          },
+          "brand": {
+            "type": "string",
+            "description": "Up to 40 characters. May be empty."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "dress",
+              "outerwear",
+              "shoes",
+              "accessory"
+            ]
+          },
+          "color": {
+            "type": "string",
+            "description": "Up to 30 characters. May be empty."
+          },
+          "season": {
+            "type": "string",
+            "enum": [
+              "spring",
+              "summer",
+              "fall",
+              "winter",
+              "allSeason"
+            ]
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "An https URL, usually one of listWardrobePhotos."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Up to 280 characters. May be empty."
+          },
+          "favorite": {
+            "type": "boolean"
+          }
+        }
+      },
+      "WardrobePhoto": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "imageUrl"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "dress",
+              "outerwear",
+              "shoes",
+              "accessory"
+            ]
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

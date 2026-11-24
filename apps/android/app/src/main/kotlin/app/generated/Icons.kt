@@ -8,10 +8,46 @@ import app.R
 
 /** Icons, drawn from res/drawable. Use with `Icon(AppIcons.settings, contentDescription = ...)`. */
 object AppIcons {
+    val add: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_add)
     val back: ImageVector
         @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_back)
-    val home: ImageVector
-        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_home)
+    val categories: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_categories)
+    val check: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_check)
+    val chevronRight: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_chevron_right)
+    val close: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_close)
+    val collections: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_collections)
+    val discover: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_discover)
+    val edit: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_edit)
+    val favorite: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_favorite)
+    val filter: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_filter)
+    val likes: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_likes)
+    val noImage: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_no_image)
+    val offline: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_offline)
+    val retry: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_retry)
+    val save: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_save)
+    val saved: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_saved)
+    val search: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_search)
     val settings: ImageVector
         @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_settings)
+    val trash: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_trash)
+    val wardrobe: ImageVector
+        @Composable get() = ImageVector.vectorResource(R.drawable.generated_icon_wardrobe)
 }

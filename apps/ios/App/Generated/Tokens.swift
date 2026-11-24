@@ -5,17 +5,22 @@ import UIKit
 
 /// Colors. Each one adapts to light and dark mode on its own.
 nonisolated enum AppColors {
-    static let background = Color(light: 0xFFFFFFFF, dark: 0x0B0D12FF)
-    static let onBackground = Color(light: 0x0F172AFF, dark: 0xE6E8EEFF)
-    static let surface = Color(light: 0xF4F5F8FF, dark: 0x161A23FF)
-    static let onSurface = Color(light: 0x0F172AFF, dark: 0xE6E8EEFF)
-    static let surfaceVariant = Color(light: 0xE9EBF1FF, dark: 0x222735FF)
-    static let onSurfaceVariant = Color(light: 0x566074FF, dark: 0xA3ABBDFF)
-    static let primary = Color(light: 0x4F46E5FF, dark: 0xA5B4FCFF)
-    static let onPrimary = Color(light: 0xFFFFFFFF, dark: 0x1E1B4BFF)
-    static let outline = Color(light: 0xD8DCE5FF, dark: 0x2D3343FF)
-    static let error = Color(light: 0xDC2626FF, dark: 0xF87171FF)
-    static let onError = Color(light: 0xFFFFFFFF, dark: 0x450A0AFF)
+    static let background = Color(light: 0xFFFFFFFF, dark: 0x0D0C0EFF)
+    static let onBackground = Color(light: 0x17141AFF, dark: 0xF2EEF1FF)
+    static let surface = Color(light: 0xF7F4F2FF, dark: 0x18161AFF)
+    static let onSurface = Color(light: 0x17141AFF, dark: 0xF2EEF1FF)
+    static let surfaceVariant = Color(light: 0xEDE8E4FF, dark: 0x25222AFF)
+    static let onSurfaceVariant = Color(light: 0x625A64FF, dark: 0xB3AAB5FF)
+    static let primary = Color(light: 0xB0174FFF, dark: 0xF58BB0FF)
+    static let onPrimary = Color(light: 0xFFFFFFFF, dark: 0x3D0719FF)
+    static let primaryContainer = Color(light: 0xFCE4ECFF, dark: 0x4A1028FF)
+    static let onPrimaryContainer = Color(light: 0x6B0B2EFF, dark: 0xFFD9E5FF)
+    static let outline = Color(light: 0xE0D9D4FF, dark: 0x36323AFF)
+    static let scrim = Color(light: 0x0000008C, dark: 0x000000A6)
+    static let onScrim = Color(light: 0xFFFFFFFF, dark: 0xFFFFFFFF)
+    static let favorite = Color(light: 0xC98A0AFF, dark: 0xF5C451FF)
+    static let error = Color(light: 0xC62828FF, dark: 0xF28B82FF)
+    static let onError = Color(light: 0xFFFFFFFF, dark: 0x410002FF)
 }
 
 /// Spacing, in points.
@@ -30,9 +35,10 @@ nonisolated enum AppSpacing {
 
 /// Corner radii, in points.
 nonisolated enum AppRadius {
-    static let sm: CGFloat = 6
-    static let md: CGFloat = 10
-    static let lg: CGFloat = 16
+    static let sm: CGFloat = 8
+    static let md: CGFloat = 12
+    static let lg: CGFloat = 20
+    static let xl: CGFloat = 28
     static let full: CGFloat = 9999
 }
 
@@ -46,6 +52,10 @@ nonisolated enum AppIconSize {
 /// Fixed sizes (touch targets and the like), in points.
 nonisolated enum AppSize {
     static let touchTarget: CGFloat = 48
+    static let thumbnail: CGFloat = 72
+    static let categoryTile: CGFloat = 132
+    static let heroImage: CGFloat = 480
+    static let cardImage: CGFloat = 240
 }
 
 /// Text styles in Inter, the shared typeface. Each scales with its Dynamic Type style, so it follows the user's text size setting.

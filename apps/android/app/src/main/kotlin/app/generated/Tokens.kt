@@ -35,37 +35,52 @@ data class AppColorTokens(
     val onSurfaceVariant: Color,
     val primary: Color,
     val onPrimary: Color,
+    val primaryContainer: Color,
+    val onPrimaryContainer: Color,
     val outline: Color,
+    val scrim: Color,
+    val onScrim: Color,
+    val favorite: Color,
     val error: Color,
     val onError: Color,
 )
 
 val LightAppColors = AppColorTokens(
     background = Color(0xFFFFFFFF),
-    onBackground = Color(0xFF0F172A),
-    surface = Color(0xFFF4F5F8),
-    onSurface = Color(0xFF0F172A),
-    surfaceVariant = Color(0xFFE9EBF1),
-    onSurfaceVariant = Color(0xFF566074),
-    primary = Color(0xFF4F46E5),
+    onBackground = Color(0xFF17141A),
+    surface = Color(0xFFF7F4F2),
+    onSurface = Color(0xFF17141A),
+    surfaceVariant = Color(0xFFEDE8E4),
+    onSurfaceVariant = Color(0xFF625A64),
+    primary = Color(0xFFB0174F),
     onPrimary = Color(0xFFFFFFFF),
-    outline = Color(0xFFD8DCE5),
-    error = Color(0xFFDC2626),
+    primaryContainer = Color(0xFFFCE4EC),
+    onPrimaryContainer = Color(0xFF6B0B2E),
+    outline = Color(0xFFE0D9D4),
+    scrim = Color(0x8C000000),
+    onScrim = Color(0xFFFFFFFF),
+    favorite = Color(0xFFC98A0A),
+    error = Color(0xFFC62828),
     onError = Color(0xFFFFFFFF),
 )
 
 val DarkAppColors = AppColorTokens(
-    background = Color(0xFF0B0D12),
-    onBackground = Color(0xFFE6E8EE),
-    surface = Color(0xFF161A23),
-    onSurface = Color(0xFFE6E8EE),
-    surfaceVariant = Color(0xFF222735),
-    onSurfaceVariant = Color(0xFFA3ABBD),
-    primary = Color(0xFFA5B4FC),
-    onPrimary = Color(0xFF1E1B4B),
-    outline = Color(0xFF2D3343),
-    error = Color(0xFFF87171),
-    onError = Color(0xFF450A0A),
+    background = Color(0xFF0D0C0E),
+    onBackground = Color(0xFFF2EEF1),
+    surface = Color(0xFF18161A),
+    onSurface = Color(0xFFF2EEF1),
+    surfaceVariant = Color(0xFF25222A),
+    onSurfaceVariant = Color(0xFFB3AAB5),
+    primary = Color(0xFFF58BB0),
+    onPrimary = Color(0xFF3D0719),
+    primaryContainer = Color(0xFF4A1028),
+    onPrimaryContainer = Color(0xFFFFD9E5),
+    outline = Color(0xFF36323A),
+    scrim = Color(0xA6000000),
+    onScrim = Color(0xFFFFFFFF),
+    favorite = Color(0xFFF5C451),
+    error = Color(0xFFF28B82),
+    onError = Color(0xFF410002),
 )
 
 /** Maps the tokens onto Material 3 color roles, so stock components match the design. */
@@ -73,8 +88,8 @@ fun AppColorTokens.toColorScheme(dark: Boolean): ColorScheme =
     (if (dark) darkColorScheme() else lightColorScheme()).copy(
         primary = primary,
         onPrimary = onPrimary,
-        primaryContainer = surfaceVariant,
-        onPrimaryContainer = onSurface,
+        primaryContainer = primaryContainer,
+        onPrimaryContainer = onPrimaryContainer,
         inversePrimary = primary,
         secondary = primary,
         onSecondary = onPrimary,
@@ -118,9 +133,10 @@ object AppSpacing {
 
 /** Corner radii. */
 object AppRadius {
-    val sm = 6.dp
-    val md = 10.dp
-    val lg = 16.dp
+    val sm = 8.dp
+    val md = 12.dp
+    val lg = 20.dp
+    val xl = 28.dp
     val full = 9999.dp
 }
 
@@ -134,6 +150,10 @@ object AppIconSize {
 /** Fixed sizes (touch targets and the like). */
 object AppSize {
     val touchTarget = 48.dp
+    val thumbnail = 72.dp
+    val categoryTile = 132.dp
+    val heroImage = 480.dp
+    val cardImage = 240.dp
 }
 
 /** The shared typeface, Inter, from contracts/fonts. */
@@ -180,7 +200,7 @@ val AppShapes = Shapes(
     small = RoundedCornerShape(AppRadius.sm),
     medium = RoundedCornerShape(AppRadius.md),
     large = RoundedCornerShape(AppRadius.lg),
-    extraLarge = RoundedCornerShape(AppRadius.lg),
+    extraLarge = RoundedCornerShape(AppRadius.xl),
 )
 
 /**

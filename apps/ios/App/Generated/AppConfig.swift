@@ -23,4 +23,13 @@ nonisolated enum AppEnvironment: String, CaseIterable {
 }
 
 /// Settings that differ per environment, shared with the Android and web apps.
-nonisolated enum AppConfig {}
+nonisolated enum AppConfig {
+    /// StyleSnap backend (backend/). In development the Android emulator reaches it through `make android-reverse` (adb reverse tcp:8787 tcp:8787).
+    static let apiBaseUrl: URL = {
+        switch AppEnvironment.current {
+        case .development: return URL(string: "http://127.0.0.1:8787")!
+        case .staging: return URL(string: "https://staging-api.stylesnap.example.com")!
+        case .production: return URL(string: "https://api.stylesnap.example.com")!
+        }
+    }()
+}

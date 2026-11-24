@@ -5,15 +5,15 @@ import { act } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
 import { describe, expect, test } from 'vitest'
-import type { AppContainer } from '#/core/AppContainer'
 import type { Appearance } from './Appearance'
 import { InMemorySettingsRepository } from './InMemorySettingsRepository'
 import { SettingsScreen } from './SettingsScreen'
 import { appearanceQuery } from './useSettingsViewModel'
+import { testContainer } from '#/testing/renderApp'
 
 interface Context {
   queryClient: QueryClient
-  container: AppContainer
+  container: ReturnType<typeof testContainer>
 }
 
 /** A router with just the Settings screen, so the test needs no browser or server. */
@@ -25,7 +25,7 @@ async function settingsRouter(stored: Appearance, { loadStoredFirst = false } = 
   const router = createRouter({
     routeTree: rootRoute.addChildren([settingsRoute]),
     history: createMemoryHistory({ initialEntries: ['/settings'] }),
-    context: { queryClient, container: { settingsRepository } },
+    context: { queryClient, container: testContainer({ settingsRepository }) },
   })
   await router.load()
   // In a browser the stored value can be ready before the page finishes hydrating.

@@ -33,3 +33,6 @@ apps/web/.vinxi/
 .env
 .env.*
 !.env.example
+
+# Backend
+backend/data/

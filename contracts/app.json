@@ -1,8 +1,8 @@
 {
-  "name": "ShoppingApp",
-  "id": "com.example.mynewapp",
+  "name": "StyleSnap",
+  "id": "com.example.stylesnap",
   "version": "1.0.0",
   "build": 1,
   "defaultLocale": "en",
-  "consistency": "adapted"
+  "consistency": "strict"
 }

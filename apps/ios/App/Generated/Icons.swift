@@ -4,7 +4,25 @@ import SwiftUI
 
 /// Icons, drawn from Icons.xcassets as template images. Use with `Image(AppIcon.settings)`.
 nonisolated enum AppIcon {
+    static let add = ImageResource(name: "icon/add", bundle: .main)
     static let back = ImageResource(name: "icon/back", bundle: .main)
-    static let home = ImageResource(name: "icon/home", bundle: .main)
+    static let categories = ImageResource(name: "icon/categories", bundle: .main)
+    static let check = ImageResource(name: "icon/check", bundle: .main)
+    static let chevronRight = ImageResource(name: "icon/chevronRight", bundle: .main)
+    static let close = ImageResource(name: "icon/close", bundle: .main)
+    static let collections = ImageResource(name: "icon/collections", bundle: .main)
+    static let discover = ImageResource(name: "icon/discover", bundle: .main)
+    static let edit = ImageResource(name: "icon/edit", bundle: .main)
+    static let favorite = ImageResource(name: "icon/favorite", bundle: .main)
+    static let filter = ImageResource(name: "icon/filter", bundle: .main)
+    static let likes = ImageResource(name: "icon/likes", bundle: .main)
+    static let noImage = ImageResource(name: "icon/noImage", bundle: .main)
+    static let offline = ImageResource(name: "icon/offline", bundle: .main)
+    static let retry = ImageResource(name: "icon/retry", bundle: .main)
+    static let save = ImageResource(name: "icon/save", bundle: .main)
+    static let saved = ImageResource(name: "icon/saved", bundle: .main)
+    static let search = ImageResource(name: "icon/search", bundle: .main)
     static let settings = ImageResource(name: "icon/settings", bundle: .main)
+    static let trash = ImageResource(name: "icon/trash", bundle: .main)
+    static let wardrobe = ImageResource(name: "icon/wardrobe", bundle: .main)
 }

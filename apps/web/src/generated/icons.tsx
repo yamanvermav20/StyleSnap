@@ -24,22 +24,146 @@ function Icon({ box, line, mirrored, className, children, ...props }: IconProps 
 
 /** Icons, as inline SVG components. Use as `<AppIcons.settings className="size-icon-md" />`. */
 export const AppIcons = {
+  add: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </Icon>
+  ),
   back: (props: IconProps) => (
     <Icon box={24} line={2} mirrored {...props}>
       <path d="m12 19-7-7 7-7" />
       <path d="M19 12H5" />
     </Icon>
   ),
-  home: (props: IconProps) => (
+  categories: (props: IconProps) => (
     <Icon box={24} line={2} {...props}>
-      <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-      <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <path d="M4 3h5a1 1 0 0 1 1 1v5a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-5a1 1 0 0 1 1 -1z" />
+      <path d="M15 3h5a1 1 0 0 1 1 1v5a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-5a1 1 0 0 1 1 -1z" />
+      <path d="M15 14h5a1 1 0 0 1 1 1v5a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-5a1 1 0 0 1 1 -1z" />
+      <path d="M4 14h5a1 1 0 0 1 1 1v5a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-5a1 1 0 0 1 1 -1z" />
+    </Icon>
+  ),
+  check: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M20 6 9 17l-5-5" />
+    </Icon>
+  ),
+  chevronRight: (props: IconProps) => (
+    <Icon box={24} line={2} mirrored {...props}>
+      <path d="m9 18 6-6-6-6" />
+    </Icon>
+  ),
+  close: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </Icon>
+  ),
+  collections: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" />
+    </Icon>
+  ),
+  discover: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+      <path d="M20 2v4" />
+      <path d="M22 4h-4" />
+      <path d="M2 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+    </Icon>
+  ),
+  edit: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+      <path d="m15 5 4 4" />
+    </Icon>
+  ),
+  favorite: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+    </Icon>
+  ),
+  filter: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M10 5H3" />
+      <path d="M12 19H3" />
+      <path d="M14 3v4" />
+      <path d="M16 17v4" />
+      <path d="M21 12h-9" />
+      <path d="M21 19h-5" />
+      <path d="M21 5h-7" />
+      <path d="M8 10v4" />
+      <path d="M8 12H3" />
+    </Icon>
+  ),
+  likes: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+    </Icon>
+  ),
+  noImage: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M2 2L22 22" />
+      <path d="M10.41 10.41a2 2 0 1 1-2.83-2.83" />
+      <path d="M13.5 13.5L6 21" />
+      <path d="M18 12L21 15" />
+      <path d="M3.59 3.59A1.99 1.99 0 0 0 3 5v14a2 2 0 0 0 2 2h14c.55 0 1.052-.22 1.41-.59" />
+      <path d="M21 15V5a2 2 0 0 0-2-2H9" />
+    </Icon>
+  ),
+  offline: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M10.94 5.274A7 7 0 0 1 15.71 10h1.79a4.5 4.5 0 0 1 4.222 6.057" />
+      <path d="M18.796 18.81A4.5 4.5 0 0 1 17.5 19H9A7 7 0 0 1 5.79 5.78" />
+      <path d="m2 2 20 20" />
+    </Icon>
+  ),
+  retry: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+      <path d="M21 3v5h-5" />
+      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+      <path d="M8 16H3v5" />
+    </Icon>
+  ),
+  save: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M12 7v6" />
+      <path d="M15 10H9" />
+      <path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" />
+    </Icon>
+  ),
+  saved: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" />
+      <path d="m9 10 2 2 4-4" />
+    </Icon>
+  ),
+  search: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="m21 21-4.34-4.34" />
+      <path d="M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0" />
     </Icon>
   ),
   settings: (props: IconProps) => (
     <Icon box={24} line={2} {...props}>
       <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
       <path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+    </Icon>
+  ),
+  trash: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M10 11v6" />
+      <path d="M14 11v6" />
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+      <path d="M3 6h18" />
+      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+    </Icon>
+  ),
+  wardrobe: (props: IconProps) => (
+    <Icon box={24} line={2} {...props}>
+      <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
     </Icon>
   ),
 } as const

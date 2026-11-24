@@ -3,7 +3,10 @@ import { RouterProvider, createMemoryHistory, createRouter } from '@tanstack/rea
 import { act } from 'react'
 import { createRoot } from 'react-dom/client'
 import type { AppContainer } from '#/core/AppContainer'
+import { InMemoryCatalogRepository } from '#/features/catalog/InMemoryCatalogRepository'
+import { InMemoryCollectionsRepository } from '#/features/collections/InMemoryCollectionsRepository'
 import { InMemorySettingsRepository } from '#/features/settings/InMemorySettingsRepository'
+import { InMemoryWardrobeRepository } from '#/features/wardrobe/InMemoryWardrobeRepository'
 import { routeTree } from '#/routeTree.gen'
 
 /**
@@ -11,7 +14,14 @@ import { routeTree } from '#/routeTree.gen'
  * here, so every test that renders the app gets a complete container.
  */
 export function testContainer(overrides: Partial<AppContainer> = {}): AppContainer {
-  return { settingsRepository: new InMemorySettingsRepository(), ...overrides }
+  const catalogRepository = overrides.catalogRepository ?? new InMemoryCatalogRepository()
+  const outfitById = catalogRepository instanceof InMemoryCatalogRepository ? (id: string) => catalogRepository.peek(id) : () => undefined
+  return {
+    settingsRepository: overrides.settingsRepository ?? new InMemorySettingsRepository(),
+    catalogRepository,
+    collectionsRepository: overrides.collectionsRepository ?? new InMemoryCollectionsRepository(outfitById),
+    wardrobeRepository: overrides.wardrobeRepository ?? new InMemoryWardrobeRepository(),
+  }
 }
 
 /**
@@ -20,7 +30,9 @@ export function testContainer(overrides: Partial<AppContainer> = {}): AppContain
  * the UI: covering a (ui) acceptance criterion means clicking through this, not calling a view model.
  */
 export async function renderApp(path: string, container: AppContainer = testContainer()) {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false, gcTime: Infinity } },
+  })
   const router = createRouter({
     routeTree,
     history: createMemoryHistory({ initialEntries: [path] }),
@@ -37,6 +49,8 @@ export async function renderApp(path: string, container: AppContainer = testCont
       </QueryClientProvider>,
     )
   })
+  // Query updates are scheduled on a timer, so wait for the first result before the test looks.
+  await settle()
   return {
     element,
     router,
@@ -52,7 +66,29 @@ export async function click(element: Element | null) {
   await act(async () => {
     ;(element as HTMLElement | null)?.click()
   })
+  await settle()
+}
+
+/** Sets a controlled input's value the way a user typing would. */
+export async function typeInto(element: HTMLInputElement | HTMLTextAreaElement, value: string) {
   await act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 50))
+    const prototype = Object.getPrototypeOf(element) as HTMLInputElement
+    Object.getOwnPropertyDescriptor(prototype, 'value')?.set?.call(element, value)
+    element.dispatchEvent(new Event('input', { bubbles: true }))
+  })
+}
+
+/** Chooses an option on a native select. */
+export async function choose(element: HTMLSelectElement, value: string) {
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value')?.set?.call(element, value)
+    element.dispatchEvent(new Event('change', { bubbles: true }))
+  })
+}
+
+/** Waits for timers (search debounce) and flushes the resulting render. */
+export async function settle(ms = 50) {
+  await act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, ms))
   })
 }

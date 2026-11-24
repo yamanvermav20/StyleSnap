@@ -39,15 +39,20 @@
  */
 @theme {
   --color-background: #ffffff;
-  --color-on-background: #0f172a;
-  --color-surface: #f4f5f8;
-  --color-on-surface: #0f172a;
-  --color-surface-variant: #e9ebf1;
-  --color-on-surface-variant: #566074;
-  --color-primary: #4f46e5;
+  --color-on-background: #17141a;
+  --color-surface: #f7f4f2;
+  --color-on-surface: #17141a;
+  --color-surface-variant: #ede8e4;
+  --color-on-surface-variant: #625a64;
+  --color-primary: #b0174f;
   --color-on-primary: #ffffff;
-  --color-outline: #d8dce5;
-  --color-error: #dc2626;
+  --color-primary-container: #fce4ec;
+  --color-on-primary-container: #6b0b2e;
+  --color-outline: #e0d9d4;
+  --color-scrim: #0000008c;
+  --color-on-scrim: #ffffff;
+  --color-favorite: #c98a0a;
+  --color-error: #c62828;
   --color-on-error: #ffffff;
 
   /* shadcn/ui names, mapped onto the tokens above */
@@ -93,9 +98,10 @@
   --min-width-xl: var(--container-xl);
   --max-width-xl: var(--container-xl);
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: calc(infinity * 1px);
 
   /* icon sizes: size-icon-md, w-icon-lg, ... */
@@ -105,6 +111,10 @@
 
   /* fixed sizes: size-touch-target, min-h-touch-target, ... */
   --spacing-touch-target: 48px;
+  --spacing-thumbnail: 72px;
+  --spacing-category-tile: 132px;
+  --spacing-hero-image: 480px;
+  --spacing-card-image: 240px;
 
   --text-display: 2.125rem;
   --text-display--line-height: 2.5625rem;
@@ -146,15 +156,20 @@
 
 .dark {
   color-scheme: dark;
-  --color-background: #0b0d12;
-  --color-on-background: #e6e8ee;
-  --color-surface: #161a23;
-  --color-on-surface: #e6e8ee;
-  --color-surface-variant: #222735;
-  --color-on-surface-variant: #a3abbd;
-  --color-primary: #a5b4fc;
-  --color-on-primary: #1e1b4b;
-  --color-outline: #2d3343;
-  --color-error: #f87171;
-  --color-on-error: #450a0a;
+  --color-background: #0d0c0e;
+  --color-on-background: #f2eef1;
+  --color-surface: #18161a;
+  --color-on-surface: #f2eef1;
+  --color-surface-variant: #25222a;
+  --color-on-surface-variant: #b3aab5;
+  --color-primary: #f58bb0;
+  --color-on-primary: #3d0719;
+  --color-primary-container: #4a1028;
+  --color-on-primary-container: #ffd9e5;
+  --color-outline: #36323a;
+  --color-scrim: #000000a6;
+  --color-on-scrim: #ffffff;
+  --color-favorite: #f5c451;
+  --color-error: #f28b82;
+  --color-on-error: #410002;
 }

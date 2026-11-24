@@ -1,6 +1,30 @@
 {
   "$family": "lucide",
-  "back": { "icon": "arrow-left", "mirrored": true },
-  "home": "house",
-  "settings": "settings"
+  "back": {
+    "icon": "arrow-left",
+    "mirrored": true
+  },
+  "settings": "settings",
+  "discover": "sparkles",
+  "search": "search",
+  "collections": "bookmark",
+  "saved": "bookmark-check",
+  "save": "bookmark-plus",
+  "wardrobe": "shirt",
+  "add": "plus",
+  "edit": "pencil",
+  "trash": "trash",
+  "close": "x",
+  "filter": "sliders-horizontal",
+  "check": "check",
+  "likes": "heart",
+  "offline": "cloud-off",
+  "noImage": "image-off",
+  "chevronRight": {
+    "icon": "chevron-right",
+    "mirrored": true
+  },
+  "retry": "refresh-cw",
+  "favorite": "star",
+  "categories": "layout-grid"
 }

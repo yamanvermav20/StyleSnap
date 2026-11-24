@@ -3,8 +3,8 @@ package app.generated
 
 /** The app's name, identifier and version, shared with the iOS and web apps. */
 object AppIdentity {
-    const val NAME = "ShoppingApp"
-    const val ID = "com.example.mynewapp"
+    const val NAME = "StyleSnap"
+    const val ID = "com.example.stylesnap"
     const val VERSION = "1.0.0"
     const val BUILD = 1
 }

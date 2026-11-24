@@ -14,5 +14,10 @@ if (!(environments as readonly string[]).includes(requested)) {
 /** The environment this build was made for: VITE_APP_ENVIRONMENT, else development when serving and production when built. */
 export const environment = requested as AppEnvironment
 
+const pick = <T>(values: Record<AppEnvironment, T>): T => values[environment]
+
 /** Settings that differ per environment, shared with the iOS and Android apps. */
-export const AppConfig = {} as const
+export const AppConfig = {
+  /** StyleSnap backend (backend/). In development the Android emulator reaches it through `make android-reverse` (adb reverse tcp:8787 tcp:8787). */
+  apiBaseUrl: pick<string>({ development: "http://127.0.0.1:8787", staging: "https://staging-api.stylesnap.example.com", production: "https://api.stylesnap.example.com" }),
+} as const

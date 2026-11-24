@@ -18,4 +18,11 @@ enum class AppEnvironment(val key: String) {
 }
 
 /** Settings that differ per environment, shared with the iOS and web apps. */
-object AppConfig {}
+object AppConfig {
+    /** StyleSnap backend (backend/). In development the Android emulator reaches it through `make android-reverse` (adb reverse tcp:8787 tcp:8787). */
+    val apiBaseUrl: String = when (AppEnvironment.current) {
+        AppEnvironment.DEVELOPMENT -> "http://127.0.0.1:8787"
+        AppEnvironment.STAGING -> "https://staging-api.stylesnap.example.com"
+        AppEnvironment.PRODUCTION -> "https://api.stylesnap.example.com"
+    }
+}

@@ -8,10 +8,98 @@ type Plural = Partial<Record<Intl.LDMLPluralRule, string>> & { other: string }
 
 const messages: Record<Locale, Record<string, string | Plural>> = {
   "en": {
+    "category.emptyBody": "Check back soon for new looks.",
+    "category.emptyTitle": "Nothing in this style yet",
+    "collectionDetail.deleteBody": "The collection is deleted. The outfits in it stay in StyleSnap.",
+    "collectionDetail.deleteTitle": "Delete this collection?",
+    "collectionDetail.emptyBody": "Tap Save on any outfit to add it here.",
+    "collectionDetail.emptyTitle": "No outfits saved yet",
+    "collectionDetail.notFound": "This collection was deleted.",
+    "collectionDetail.removeOutfit": "Remove from collection",
+    "collectionEditor.createTitle": "New collection",
+    "collectionEditor.description": "Description",
+    "collectionEditor.descriptionPlaceholder": "What's this collection for?",
+    "collectionEditor.editTitle": "Edit collection",
+    "collectionEditor.name": "Name",
+    "collectionEditor.namePlaceholder": "Weekend looks",
+    "collectionEditor.nameRequired": "Give your collection a name.",
+    "collectionEditor.nameTooLong": "Use 40 characters or fewer.",
+    "collections.add": "New collection",
+    "collections.emptyAction": "Create a collection",
+    "collections.emptyBody": "Create a collection, then save outfits to it from any look.",
+    "collections.emptyTitle": "Save looks you love",
+    "collections.title": "Collections",
     "common.back": "Back",
-    "home.openSettings": "Settings",
-    "home.welcomeBody": "This app is built natively for iOS, Android and the web from one shared spec. Describe what you want to build to your coding agent, and it will build it for all three.",
-    "home.welcomeTitle": "You're all set",
+    "common.cancel": "Cancel",
+    "common.close": "Close",
+    "common.delete": "Delete",
+    "common.deleteFailed": "Couldn't delete it. Try again.",
+    "common.done": "Done",
+    "common.edit": "Edit",
+    "common.errorBody": "Check that you're online and the StyleSnap server is running, then try again.",
+    "common.errorTitle": "Couldn't load this",
+    "common.itemCount": {"zero":"No items","one":"{count} item","other":"{count} items"},
+    "common.likes": {"one":"{count} like","other":"{count} likes"},
+    "common.loading": "Loading",
+    "common.outfitCount": {"zero":"No outfits","one":"{count} outfit","other":"{count} outfits"},
+    "common.price": "${price}",
+    "common.retry": "Try again",
+    "common.save": "Save",
+    "common.saveFailed": "Couldn't save your changes. Try again.",
+    "common.seeAll": "See all",
+    "feed.byCreator": "by {name}",
+    "feed.categoriesTitle": "Shop by style",
+    "feed.emptyBody": "New outfits will show up here.",
+    "feed.emptyTitle": "No looks yet",
+    "feed.openSettings": "Settings",
+    "feed.title": "Discover",
+    "feed.trendingTitle": "Trending looks",
+    "itemType.accessory": "Accessories",
+    "itemType.bottom": "Bottoms",
+    "itemType.dress": "Dresses",
+    "itemType.outerwear": "Outerwear",
+    "itemType.shoes": "Shoes",
+    "itemType.top": "Tops",
+    "occasion.date": "Date night",
+    "occasion.everyday": "Everyday",
+    "occasion.party": "Party",
+    "occasion.sport": "Sport",
+    "occasion.travel": "Travel",
+    "occasion.work": "Work",
+    "outfitDetail.category": "Style",
+    "outfitDetail.detailsTitle": "Details",
+    "outfitDetail.itemsTitle": "Shop the look",
+    "outfitDetail.notFound": "This outfit is no longer available.",
+    "outfitDetail.occasion": "Occasion",
+    "outfitDetail.photoPosition": "Photo {position:int} of {total:int}",
+    "outfitDetail.save": "Save",
+    "outfitDetail.saved": "Saved",
+    "outfitDetail.season": "Season",
+    "outfitDetail.title": "Outfit",
+    "saveToCollection.added": "Saved to {name}",
+    "saveToCollection.emptyBody": "You don't have any collections yet. Create one to start saving looks.",
+    "saveToCollection.newCollection": "New collection",
+    "saveToCollection.removed": "Removed from {name}",
+    "saveToCollection.title": "Save to collection",
+    "search.any": "Any",
+    "search.category": "Style",
+    "search.clearFilters": "Clear filters",
+    "search.emptyBody": "Try a different search or clear some filters.",
+    "search.emptyTitle": "No outfits match",
+    "search.filters": "Filters",
+    "search.occasion": "Occasion",
+    "search.placeholder": "Search outfits, brands, styles",
+    "search.resultCount": {"zero":"No results","one":"{count} result","other":"{count} results"},
+    "search.season": "Season",
+    "search.sort": "Sort by",
+    "search.sortNewest": "Newest",
+    "search.sortPopular": "Most popular",
+    "search.title": "Search",
+    "season.allSeason": "All season",
+    "season.fall": "Fall",
+    "season.spring": "Spring",
+    "season.summer": "Summer",
+    "season.winter": "Winter",
     "settings.about.title": "About",
     "settings.about.version": "Version {version} ({build:int})",
     "settings.appearance.dark": "Dark",
@@ -19,6 +107,38 @@ const messages: Record<Locale, Record<string, string | Plural>> = {
     "settings.appearance.system": "System",
     "settings.appearance.title": "Appearance",
     "settings.title": "Settings",
+    "tabs.collections": "Collections",
+    "tabs.discover": "Discover",
+    "tabs.search": "Search",
+    "tabs.wardrobe": "Wardrobe",
+    "wardrobe.add": "Add item",
+    "wardrobe.all": "All",
+    "wardrobe.emptyBody": "Add the clothes you own to plan outfits around them.",
+    "wardrobe.emptyFilteredBody": "You haven't added any items of this type.",
+    "wardrobe.emptyFilteredTitle": "Nothing here yet",
+    "wardrobe.emptyTitle": "Build your wardrobe",
+    "wardrobe.favorite": "Favorite",
+    "wardrobe.title": "Wardrobe",
+    "wardrobeEditor.brand": "Brand",
+    "wardrobeEditor.brandPlaceholder": "Optional",
+    "wardrobeEditor.color": "Color",
+    "wardrobeEditor.colorPlaceholder": "Optional",
+    "wardrobeEditor.createTitle": "New item",
+    "wardrobeEditor.delete": "Delete item",
+    "wardrobeEditor.deleteBody": "It's removed from your wardrobe. This can't be undone.",
+    "wardrobeEditor.deleteTitle": "Delete this item?",
+    "wardrobeEditor.editTitle": "Edit item",
+    "wardrobeEditor.favorite": "Favorite",
+    "wardrobeEditor.name": "Name",
+    "wardrobeEditor.namePlaceholder": "White linen shirt",
+    "wardrobeEditor.nameRequired": "Give the item a name.",
+    "wardrobeEditor.notFound": "This item was deleted.",
+    "wardrobeEditor.notes": "Notes",
+    "wardrobeEditor.notesPlaceholder": "Fit, care, what it goes with",
+    "wardrobeEditor.photo": "Photo",
+    "wardrobeEditor.photoRequired": "Choose a photo.",
+    "wardrobeEditor.season": "Season",
+    "wardrobeEditor.type": "Type",
   },
 }
 
@@ -41,23 +161,364 @@ function fill(template: string, args: Record<string, string | number>): string {
   return template.replace(/\{(\w+)(?::\w+)?\}/g, (_, name: string) => String(args[name]))
 }
 
+function plural(key: string, count: number): string {
+  const forms = lookup(key) as Plural
+  // A "zero" form is for a count of 0 in every language, as on iOS: Intl.PluralRules has no zero category in English.
+  const form = count === 0 && forms.zero !== undefined ? forms.zero : forms[new Intl.PluralRules(currentLocale).select(count)]
+  return fill(form ?? forms.other, { count })
+}
+
 /** User-facing copy. Keys and placeholders match the iOS and Android apps. */
 export const strings = {
+  /** Check back soon for new looks. */
+  get categoryEmptyBody() {
+    return text("category.emptyBody")
+  },
+  /** Nothing in this style yet */
+  get categoryEmptyTitle() {
+    return text("category.emptyTitle")
+  },
+  /** The collection is deleted. The outfits in it stay in StyleSnap. */
+  get collectionDetailDeleteBody() {
+    return text("collectionDetail.deleteBody")
+  },
+  /** Delete this collection? */
+  get collectionDetailDeleteTitle() {
+    return text("collectionDetail.deleteTitle")
+  },
+  /** Tap Save on any outfit to add it here. */
+  get collectionDetailEmptyBody() {
+    return text("collectionDetail.emptyBody")
+  },
+  /** No outfits saved yet */
+  get collectionDetailEmptyTitle() {
+    return text("collectionDetail.emptyTitle")
+  },
+  /** This collection was deleted. */
+  get collectionDetailNotFound() {
+    return text("collectionDetail.notFound")
+  },
+  /** Remove from collection */
+  get collectionDetailRemoveOutfit() {
+    return text("collectionDetail.removeOutfit")
+  },
+  /** New collection */
+  get collectionEditorCreateTitle() {
+    return text("collectionEditor.createTitle")
+  },
+  /** Description */
+  get collectionEditorDescription() {
+    return text("collectionEditor.description")
+  },
+  /** What's this collection for? */
+  get collectionEditorDescriptionPlaceholder() {
+    return text("collectionEditor.descriptionPlaceholder")
+  },
+  /** Edit collection */
+  get collectionEditorEditTitle() {
+    return text("collectionEditor.editTitle")
+  },
+  /** Name */
+  get collectionEditorName() {
+    return text("collectionEditor.name")
+  },
+  /** Weekend looks */
+  get collectionEditorNamePlaceholder() {
+    return text("collectionEditor.namePlaceholder")
+  },
+  /** Give your collection a name. */
+  get collectionEditorNameRequired() {
+    return text("collectionEditor.nameRequired")
+  },
+  /** Use 40 characters or fewer. */
+  get collectionEditorNameTooLong() {
+    return text("collectionEditor.nameTooLong")
+  },
+  /** New collection */
+  get collectionsAdd() {
+    return text("collections.add")
+  },
+  /** Create a collection */
+  get collectionsEmptyAction() {
+    return text("collections.emptyAction")
+  },
+  /** Create a collection, then save outfits to it from any look. */
+  get collectionsEmptyBody() {
+    return text("collections.emptyBody")
+  },
+  /** Save looks you love */
+  get collectionsEmptyTitle() {
+    return text("collections.emptyTitle")
+  },
+  /** Collections */
+  get collectionsTitle() {
+    return text("collections.title")
+  },
   /** Back */
   get commonBack() {
     return text("common.back")
   },
+  /** Cancel */
+  get commonCancel() {
+    return text("common.cancel")
+  },
+  /** Close */
+  get commonClose() {
+    return text("common.close")
+  },
+  /** Delete */
+  get commonDelete() {
+    return text("common.delete")
+  },
+  /** Couldn't delete it. Try again. */
+  get commonDeleteFailed() {
+    return text("common.deleteFailed")
+  },
+  /** Done */
+  get commonDone() {
+    return text("common.done")
+  },
+  /** Edit */
+  get commonEdit() {
+    return text("common.edit")
+  },
+  /** Check that you're online and the StyleSnap server is running, then try again. */
+  get commonErrorBody() {
+    return text("common.errorBody")
+  },
+  /** Couldn't load this */
+  get commonErrorTitle() {
+    return text("common.errorTitle")
+  },
+  /** {count} items */
+  commonItemCount: (count: number) => plural("common.itemCount", count),
+  /** {count} likes */
+  commonLikes: (count: number) => plural("common.likes", count),
+  /** Loading */
+  get commonLoading() {
+    return text("common.loading")
+  },
+  /** {count} outfits */
+  commonOutfitCount: (count: number) => plural("common.outfitCount", count),
+  /** ${price} */
+  commonPrice: (args: { price: string }) => text("common.price", args),
+  /** Try again */
+  get commonRetry() {
+    return text("common.retry")
+  },
+  /** Save */
+  get commonSave() {
+    return text("common.save")
+  },
+  /** Couldn't save your changes. Try again. */
+  get commonSaveFailed() {
+    return text("common.saveFailed")
+  },
+  /** See all */
+  get commonSeeAll() {
+    return text("common.seeAll")
+  },
+  /** by {name} */
+  feedByCreator: (args: { name: string }) => text("feed.byCreator", args),
+  /** Shop by style */
+  get feedCategoriesTitle() {
+    return text("feed.categoriesTitle")
+  },
+  /** New outfits will show up here. */
+  get feedEmptyBody() {
+    return text("feed.emptyBody")
+  },
+  /** No looks yet */
+  get feedEmptyTitle() {
+    return text("feed.emptyTitle")
+  },
   /** Settings */
-  get homeOpenSettings() {
-    return text("home.openSettings")
+  get feedOpenSettings() {
+    return text("feed.openSettings")
   },
-  /** This app is built natively for iOS, Android and the web from one shared spec. Describe what you want to build to your coding agent, and it will build it for all three. */
-  get homeWelcomeBody() {
-    return text("home.welcomeBody")
+  /** Discover */
+  get feedTitle() {
+    return text("feed.title")
   },
-  /** You're all set */
-  get homeWelcomeTitle() {
-    return text("home.welcomeTitle")
+  /** Trending looks */
+  get feedTrendingTitle() {
+    return text("feed.trendingTitle")
+  },
+  /** Accessories */
+  get itemTypeAccessory() {
+    return text("itemType.accessory")
+  },
+  /** Bottoms */
+  get itemTypeBottom() {
+    return text("itemType.bottom")
+  },
+  /** Dresses */
+  get itemTypeDress() {
+    return text("itemType.dress")
+  },
+  /** Outerwear */
+  get itemTypeOuterwear() {
+    return text("itemType.outerwear")
+  },
+  /** Shoes */
+  get itemTypeShoes() {
+    return text("itemType.shoes")
+  },
+  /** Tops */
+  get itemTypeTop() {
+    return text("itemType.top")
+  },
+  /** Date night */
+  get occasionDate() {
+    return text("occasion.date")
+  },
+  /** Everyday */
+  get occasionEveryday() {
+    return text("occasion.everyday")
+  },
+  /** Party */
+  get occasionParty() {
+    return text("occasion.party")
+  },
+  /** Sport */
+  get occasionSport() {
+    return text("occasion.sport")
+  },
+  /** Travel */
+  get occasionTravel() {
+    return text("occasion.travel")
+  },
+  /** Work */
+  get occasionWork() {
+    return text("occasion.work")
+  },
+  /** Style */
+  get outfitDetailCategory() {
+    return text("outfitDetail.category")
+  },
+  /** Details */
+  get outfitDetailDetailsTitle() {
+    return text("outfitDetail.detailsTitle")
+  },
+  /** Shop the look */
+  get outfitDetailItemsTitle() {
+    return text("outfitDetail.itemsTitle")
+  },
+  /** This outfit is no longer available. */
+  get outfitDetailNotFound() {
+    return text("outfitDetail.notFound")
+  },
+  /** Occasion */
+  get outfitDetailOccasion() {
+    return text("outfitDetail.occasion")
+  },
+  /** Photo {position} of {total} */
+  outfitDetailPhotoPosition: (args: { position: number; total: number }) => text("outfitDetail.photoPosition", args),
+  /** Save */
+  get outfitDetailSave() {
+    return text("outfitDetail.save")
+  },
+  /** Saved */
+  get outfitDetailSaved() {
+    return text("outfitDetail.saved")
+  },
+  /** Season */
+  get outfitDetailSeason() {
+    return text("outfitDetail.season")
+  },
+  /** Outfit */
+  get outfitDetailTitle() {
+    return text("outfitDetail.title")
+  },
+  /** Saved to {name} */
+  saveToCollectionAdded: (args: { name: string }) => text("saveToCollection.added", args),
+  /** You don't have any collections yet. Create one to start saving looks. */
+  get saveToCollectionEmptyBody() {
+    return text("saveToCollection.emptyBody")
+  },
+  /** New collection */
+  get saveToCollectionNewCollection() {
+    return text("saveToCollection.newCollection")
+  },
+  /** Removed from {name} */
+  saveToCollectionRemoved: (args: { name: string }) => text("saveToCollection.removed", args),
+  /** Save to collection */
+  get saveToCollectionTitle() {
+    return text("saveToCollection.title")
+  },
+  /** Any */
+  get searchAny() {
+    return text("search.any")
+  },
+  /** Style */
+  get searchCategory() {
+    return text("search.category")
+  },
+  /** Clear filters */
+  get searchClearFilters() {
+    return text("search.clearFilters")
+  },
+  /** Try a different search or clear some filters. */
+  get searchEmptyBody() {
+    return text("search.emptyBody")
+  },
+  /** No outfits match */
+  get searchEmptyTitle() {
+    return text("search.emptyTitle")
+  },
+  /** Filters */
+  get searchFilters() {
+    return text("search.filters")
+  },
+  /** Occasion */
+  get searchOccasion() {
+    return text("search.occasion")
+  },
+  /** Search outfits, brands, styles */
+  get searchPlaceholder() {
+    return text("search.placeholder")
+  },
+  /** {count} results */
+  searchResultCount: (count: number) => plural("search.resultCount", count),
+  /** Season */
+  get searchSeason() {
+    return text("search.season")
+  },
+  /** Sort by */
+  get searchSort() {
+    return text("search.sort")
+  },
+  /** Newest */
+  get searchSortNewest() {
+    return text("search.sortNewest")
+  },
+  /** Most popular */
+  get searchSortPopular() {
+    return text("search.sortPopular")
+  },
+  /** Search */
+  get searchTitle() {
+    return text("search.title")
+  },
+  /** All season */
+  get seasonAllSeason() {
+    return text("season.allSeason")
+  },
+  /** Fall */
+  get seasonFall() {
+    return text("season.fall")
+  },
+  /** Spring */
+  get seasonSpring() {
+    return text("season.spring")
+  },
+  /** Summer */
+  get seasonSummer() {
+    return text("season.summer")
+  },
+  /** Winter */
+  get seasonWinter() {
+    return text("season.winter")
   },
   /** About */
   get settingsAboutTitle() {
@@ -84,5 +545,133 @@ export const strings = {
   /** Settings */
   get settingsTitle() {
     return text("settings.title")
+  },
+  /** Collections */
+  get tabsCollections() {
+    return text("tabs.collections")
+  },
+  /** Discover */
+  get tabsDiscover() {
+    return text("tabs.discover")
+  },
+  /** Search */
+  get tabsSearch() {
+    return text("tabs.search")
+  },
+  /** Wardrobe */
+  get tabsWardrobe() {
+    return text("tabs.wardrobe")
+  },
+  /** Add item */
+  get wardrobeAdd() {
+    return text("wardrobe.add")
+  },
+  /** All */
+  get wardrobeAll() {
+    return text("wardrobe.all")
+  },
+  /** Add the clothes you own to plan outfits around them. */
+  get wardrobeEmptyBody() {
+    return text("wardrobe.emptyBody")
+  },
+  /** You haven't added any items of this type. */
+  get wardrobeEmptyFilteredBody() {
+    return text("wardrobe.emptyFilteredBody")
+  },
+  /** Nothing here yet */
+  get wardrobeEmptyFilteredTitle() {
+    return text("wardrobe.emptyFilteredTitle")
+  },
+  /** Build your wardrobe */
+  get wardrobeEmptyTitle() {
+    return text("wardrobe.emptyTitle")
+  },
+  /** Favorite */
+  get wardrobeFavorite() {
+    return text("wardrobe.favorite")
+  },
+  /** Wardrobe */
+  get wardrobeTitle() {
+    return text("wardrobe.title")
+  },
+  /** Brand */
+  get wardrobeEditorBrand() {
+    return text("wardrobeEditor.brand")
+  },
+  /** Optional */
+  get wardrobeEditorBrandPlaceholder() {
+    return text("wardrobeEditor.brandPlaceholder")
+  },
+  /** Color */
+  get wardrobeEditorColor() {
+    return text("wardrobeEditor.color")
+  },
+  /** Optional */
+  get wardrobeEditorColorPlaceholder() {
+    return text("wardrobeEditor.colorPlaceholder")
+  },
+  /** New item */
+  get wardrobeEditorCreateTitle() {
+    return text("wardrobeEditor.createTitle")
+  },
+  /** Delete item */
+  get wardrobeEditorDelete() {
+    return text("wardrobeEditor.delete")
+  },
+  /** It's removed from your wardrobe. This can't be undone. */
+  get wardrobeEditorDeleteBody() {
+    return text("wardrobeEditor.deleteBody")
+  },
+  /** Delete this item? */
+  get wardrobeEditorDeleteTitle() {
+    return text("wardrobeEditor.deleteTitle")
+  },
+  /** Edit item */
+  get wardrobeEditorEditTitle() {
+    return text("wardrobeEditor.editTitle")
+  },
+  /** Favorite */
+  get wardrobeEditorFavorite() {
+    return text("wardrobeEditor.favorite")
+  },
+  /** Name */
+  get wardrobeEditorName() {
+    return text("wardrobeEditor.name")
+  },
+  /** White linen shirt */
+  get wardrobeEditorNamePlaceholder() {
+    return text("wardrobeEditor.namePlaceholder")
+  },
+  /** Give the item a name. */
+  get wardrobeEditorNameRequired() {
+    return text("wardrobeEditor.nameRequired")
+  },
+  /** This item was deleted. */
+  get wardrobeEditorNotFound() {
+    return text("wardrobeEditor.notFound")
+  },
+  /** Notes */
+  get wardrobeEditorNotes() {
+    return text("wardrobeEditor.notes")
+  },
+  /** Fit, care, what it goes with */
+  get wardrobeEditorNotesPlaceholder() {
+    return text("wardrobeEditor.notesPlaceholder")
+  },
+  /** Photo */
+  get wardrobeEditorPhoto() {
+    return text("wardrobeEditor.photo")
+  },
+  /** Choose a photo. */
+  get wardrobeEditorPhotoRequired() {
+    return text("wardrobeEditor.photoRequired")
+  },
+  /** Season */
+  get wardrobeEditorSeason() {
+    return text("wardrobeEditor.season")
+  },
+  /** Type */
+  get wardrobeEditorType() {
+    return text("wardrobeEditor.type")
   },
 }

@@ -1,0 +1,21 @@
+{
+  "launchExtras": {
+    "screenshotCategoryId": "evening",
+    "screenshotOutfitId": "outfit-17",
+    "screenshotCollectionId": "collection-weekend",
+    "screenshotWardrobeItemId": "wardrobe-03"
+  },
+  "webStorage": {},
+  "screens": [
+    { "id": "feed", "label": "Discover", "signedIn": false, "webPath": "/", "showcase": true },
+    { "id": "category", "label": "Category", "signedIn": false, "webPath": "/categories/evening" },
+    { "id": "outfit-detail", "label": "Outfit detail", "signedIn": false, "webPath": "/outfits/outfit-17", "showcase": true },
+    { "id": "search", "label": "Search", "signedIn": false, "webPath": "/search" },
+    { "id": "collections", "label": "Collections", "signedIn": false, "webPath": "/collections" },
+    { "id": "collection-detail", "label": "Collection", "signedIn": false, "webPath": "/collections/collection-weekend", "showcase": true },
+    { "id": "collection-editor", "label": "Edit collection", "signedIn": false, "webPath": "/collections/collection-weekend/edit" },
+    { "id": "wardrobe", "label": "Wardrobe", "signedIn": false, "webPath": "/wardrobe", "showcase": true },
+    { "id": "wardrobe-editor", "label": "Wardrobe item", "signedIn": false, "webPath": "/wardrobe/wardrobe-03" },
+    { "id": "settings", "label": "Settings", "signedIn": false, "webPath": "/settings" }
+  ]
+}

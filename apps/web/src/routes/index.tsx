@@ -1,6 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { HomeScreen } from '#/features/home/HomeScreen'
+import { documentTitle } from '#/core/documentTitle'
+import { FeedScreen } from '#/features/feed/FeedScreen'
+import { strings } from '#/generated/strings'
 
 export const Route = createFileRoute('/')({
-  component: HomeScreen,
+  head: () => ({ meta: [{ title: documentTitle(strings.feedTitle) }] }),
+  component: FeedScreen,
 })

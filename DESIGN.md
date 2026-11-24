@@ -7,7 +7,12 @@ design changes. Token values live in contracts/tokens.json; this file explains h
 
 ## Direction
 
-_Not described yet. Describe the look you want (for example "calm and minimal" or "bold and playful") and your coding agent will set colors, type and spacing to match._
+**Editorial and image-first.** StyleSnap reads like a fashion magazine: big portrait photos, generous white space, and quiet chrome that gets out of the way of the clothes.
+
+- **Photos lead.** Outfit photos are portrait 3:4 and fill their card edge to edge, with `lg` corners. Text sits below a photo, or on a `scrim` gradient at its bottom edge when it overlays one (category tiles, the outfit hero).
+- **Warm neutrals and one accent.** Backgrounds are white (light) and near-black (dark), cards a warm off-white `surface`. A deep rose `primary` marks the one thing that matters on a screen: Save, a selected chip, the active tab. `primaryContainer` fills selected filter chips.
+- **Soft, rounded shapes.** `lg` (20) for cards and photos, `xl` (28) for sheets and the hero photo, `full` for chips and pill buttons.
+- **Inter throughout**, with `headline` for screen and section titles and `caption` for meta (creator, likes).
 
 ## Consistency
 
@@ -51,8 +56,13 @@ Defined in contracts/tokens.json and compiled into each app by `make gen`.
 - `surface` / `onSurface`: cards and grouped content on a screen.
 - `surfaceVariant` / `onSurfaceVariant`: subtle fills and secondary text.
 - `primary` / `onPrimary`: the brand color, for primary actions and selection.
+- `primaryContainer` / `onPrimaryContainer`: selected chips and soft highlights.
 - `outline`: borders and dividers.
+- `scrim` / `onScrim`: a translucent dark layer over photos so overlaid text stays readable (category tiles, hero captions, the photo position badge). `onScrim` is white in both modes.
+- `favorite`: the filled star on favorite wardrobe items.
 - `error` / `onError`: errors and destructive actions.
+
+**Sizes.** `thumbnail` (72) for item rows, `categoryTile` (132) for the width of a category tile, `cardImage` (240) as the minimum width of an outfit card in a grid, `heroImage` (480) as the hero photo's maximum height on wide windows.
 
 **Type roles.** `display`, `headline`, `title`, `body`, `label`, `caption`. Each has a size, line height and weight that every app uses. On iOS each role also names the Dynamic Type style it scales with; on Android sizes are sp and on web rem, so text follows the user's text size setting everywhere. Line height applies on Android and web (SwiftUI text takes its line spacing from the font).
 
@@ -77,6 +87,19 @@ How each platform builds the shared patterns. Add a row whenever a new pattern a
 | Card | `AppColors.surface` fill, `AppRadius.lg` corners | `Surface` in `AppTheme.colors.surface`, `AppRadius.lg` corners | `bg-surface rounded-lg` |
 | Primary action | `.buttonStyle(.primary)` (Core/DesignSystem/PrimaryButtonStyle.swift): `onPrimary` on `primary`. Not plain `.borderedProminent`, whose white text is unreadable on a light dark-mode `primary` | `Button` | `button` with `bg-primary text-on-primary` |
 | Icon | `Image(AppIcon.settings)` (a template image) | `Icon(AppIcons.settings, contentDescription = ...)` | `<AppIcons.settings className="size-icon-md" />` |
+| Top-level sections | `TabView` with four tabs (Discover, Search, Collections, Wardrobe), each its own `NavigationStack` | `NavigationBar` with the same four tabs, each tab keeping its own back stack | Site header with the four sections as links (the current one marked with `aria-current`) and the Settings gear |
+| Remote photo | `RemotePhoto` (Core/DesignSystem): `AsyncImage` with a `surfaceVariant` placeholder while loading and a `noImage` icon on failure | `RemotePhoto` (core/designsystem): Coil `AsyncImage` with the same placeholder and failure icon | `RemotePhoto` (core/designsystem): `<img loading="lazy">` on a `bg-surface-variant` box, with the `noImage` icon on error |
+| Outfit card | Photo 3:4 with `lg` corners, then the title (`label`) and creator plus likes (`caption`, `onSurfaceVariant`) | Same | Same |
+| Outfit grid | `LazyVGrid` with adaptive columns of at least `cardImage` / 1.5 wide (two columns on phones) | `LazyVerticalGrid(GridCells.Adaptive)` with the same minimum | CSS grid, two columns on narrow windows, more as the window grows |
+| Category tile | Photo with `lg` corners, `categoryTile` wide and 4:5, the name on a `scrim` at the bottom in `onScrim`. In a horizontal scroller on Discover | Same, in a `LazyRow` | Same, in a horizontally scrolling row |
+| Filter chip | Capsule: `surfaceVariant` fill when off, `primaryContainer` fill with a `check` icon when on; at least `touchTarget` tall to tap | `FilterChip` with the same colors | `button` with `aria-pressed`, same colors |
+| Loading | A centered `ProgressView` for a whole screen; photo placeholders in `surfaceVariant` | `CircularProgressIndicator` | A spinner with `role="status"` and `common.loading` for screen readers |
+| Error | `StateMessage` (Core/DesignSystem): the `offline` icon, `common.errorTitle`, `common.errorBody` and a Retry button (`common.retry`) | `StateMessage`, same content | `StateMessage`, same content |
+| Empty | `StateMessage` with the screen's icon, an empty title and body, and an optional action | Same | Same |
+| Confirmation (delete) | `.confirmationDialog` with a destructive button | `AlertDialog` | Native `<dialog>` |
+| Editor (collection, wardrobe item) | A sheet with a `NavigationStack`, Cancel and Save in the toolbar, and a `Form` | A full-screen route with a top app bar (close and Save) | A route with a form in a card; Cancel and Save buttons at the bottom |
+| Save to collection | A sheet (medium detent) listing collections with checkmarks | `ModalBottomSheet` | Native `<dialog>` |
+| Transient message (saved, removed) | An overlay toast at the bottom that fades after a few seconds | `Snackbar` | A `role="status"` toast at the bottom |
 
 ## Accessibility
 
